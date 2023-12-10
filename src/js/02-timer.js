@@ -48,25 +48,21 @@ const options = {
         console.log(days);
         return { days, hours, minutes, seconds };
       }
-      timerId = setInterval(() => {
-        body.style.backgroundColor = getRandomHexColor();
-      }, 1000);
+
       days.textContent = convertMs(ms).days;
       hours.textContent = convertMs(ms).hours;
       minutes.textContent = convertMs(ms).minutes;
       seconds.textContent = convertMs(ms).seconds;
-
-      function stopCounting() {
-        if (selectedDates[0].getTime() === actuallDate.getTime()) {
-          seconds.textContent = 0;
-          return;
-        }
-      }
-      stopCounting();
     } else {
       window.alert('Please choose a date in the future');
     }
   },
 };
 
+function stopCounting() {
+  if (selectedDates[0].getTime() === actuallDate.getTime()) {
+    seconds.textContent = 0;
+    return;
+  }
+}
 flatpickr(pickDateInput, options);
