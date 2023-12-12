@@ -1,7 +1,7 @@
 const form = document.querySelector('.form');
 let firstDelay;
 let stepDelay;
-let amount = form.amount;
+let amount;
 const submit = document.querySelector('.submit');
 let timerId;
 
@@ -20,10 +20,11 @@ function handleClick(event) {
   amount = form.amount.value;
   firstDelay = form.delay.value;
   stepDelay = form.step.value;
-  const first = getChances();
-  const second = getChances();
-  const third = getChances();
-  Promise.all([first, second, third]).then(results => {
+  const promises = [];
+  for (let i = 0; i < amount; i++) {
+    promises.push(getChances());
+  }
+  Promise.all(promises).then(results => {
     for (let i = 0; i < results.length; i++) {
       console.log('losowanie' + `${i + 1} = ${results[i]}`);
     }
