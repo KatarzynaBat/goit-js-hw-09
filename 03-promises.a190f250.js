@@ -1,0 +1,2 @@
+const e=document.querySelector(".form");let o,t,l;function n(e,o=Math.random()){return o>.3?Promise.resolve(" yes"):Promise.resolve("no")}document.querySelector(".submit").addEventListener("click",(function(r){r.preventDefault(),l=e.amount.value,o=e.delay.value,t=e.step.value;const s=[];for(let e=0;e<l;e++)s.push(n());Promise.all(s).then((e=>{for(let o=0;o<e.length;o++)console.log(`losowanie${o+1} = ${e[o]}`)}))}));
+//# sourceMappingURL=03-promises.a190f250.js.map
