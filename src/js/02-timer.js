@@ -26,6 +26,7 @@ for (const span of spans) {
 const actuallDate = new Date();
 let ms;
 let timerID;
+let selected;
 
 const options = {
   enableTime: true,
@@ -33,7 +34,7 @@ const options = {
   defaultDate: actuallDate,
   minuteIncrement: 1,
   onClose(selectedDates) {
-    selected = selectedDates;
+    let selected = selectedDates;
     console.log(selected);
     if (selectedDates[0].getTime() > actuallDate.getTime()) {
       console.log('true');

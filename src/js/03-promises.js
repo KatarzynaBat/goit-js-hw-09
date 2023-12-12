@@ -17,6 +17,7 @@ function getChances(id, delay) {
     }, delay);
   });
 }
+
 // pętla wywoływania funkcji
 function handleClick(event) {
   event.preventDefault();
