@@ -1,2 +1,0 @@
-!function(){var e,o=document.querySelector(".form");function n(e){var o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:Math.random();return o>.3?Promise.resolve(" yes"):Promise.resolve("no")}document.querySelector(".submit").addEventListener("click",(function(t){t.preventDefault(),e=o.amount.value,o.delay.value,o.step.value;for(var r=[],a=0;a<e;a++)r.push(n());Promise.all(r).then((function(e){for(var o=0;o<e.length;o++)console.log("losowanie"+"".concat(o+1," = ").concat(e[o]))}))}))}();
-//# sourceMappingURL=03-promises.2c3e1ebe.js.map
