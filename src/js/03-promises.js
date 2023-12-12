@@ -1,41 +1,38 @@
 const form = document.querySelector('.form');
-let firstDelay;
+let delay;
 let stepDelay;
 let amount;
 const submit = document.querySelector('.submit');
-let timerId;
 
 // losowanie i zwracanie wyniku
 
-function getChances(id, delay = 5000) {
-  firstDelay = form.delay.value;
-  console.log(firstDelay);
-  return new Promise(resolve => {
+function getChances(id, delay) {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (Math.random() > 0.3) {
-        resolve(`yes`);
+        resolve({ id, delay });
       } else {
-        resolve(`no`);
+        reject({ id, delay });
       }
     }, delay);
   });
 }
-
+// pętla wywoływania funkcji
 function handleClick(event) {
   event.preventDefault();
-  amount = form.amount.value;
-  firstDelay = form.delay.value;
-  stepDelay = form.step.value;
-  const promises = [];
-  for (let i = 0; i < amount; i++) {
-    let reallyGetChances = getChances(i, firstDelay);
-    promises.push(reallyGetChances);
+  amount = Number(form.amount.value);
+  stepDelay = Number(form.step.value);
+  delay = Number(form.delay.value);
+  for (let i = 1; i <= amount; i++) {
+    getChances(i, delay + stepDelay * (i - 1))
+      .then(({ id, delay }) => {
+        console.log(`Fulfilled promise ${id} in ${delay}ms`);
+      })
+
+      .catch(({ id, delay }) => {
+        console.log(`Rejected promise ${id} in ${delay}ms`);
+      });
   }
-  Promise.all(promises).then(results => {
-    for (let i = 0; i < results.length; i++) {
-      console.log('losowanie' + `${i + 1} = ${results[i]}`);
-    }
-  });
 }
 
 submit.addEventListener('click', handleClick);
