@@ -1,39 +1,45 @@
-function counting(selectedDates) { 
-    let ms = selectedDates[0].getTime() - actuallDate.getTime();
-  function convertMs(ms) {
-    function addLeadingZero(value) {
-      value = value.toString().padStart(2, '0');
-      return value;
-    }
 
-    // Number of milliseconds per unit of time
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
+function createPromise(position, delay) {
+  const shouldResolve = Math.random() > 0.3;
+  return new Promise(resolve => {
+    firstDelay = form.delay.value;
+    stepDelay = form.step.value;
+    amount = form.amount.value;
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve('${position} yes');
+      } else {
+        reject('${position}no');
+      }
+    }, firstDelay);
+  });
+}
+// wywiałanie obietnicy
 
-    // Remaining days
-    const days = addLeadingZero(Math.floor(ms / day));
-    // Remaining hours
-    const hours = Math.floor((ms % day) / hour);
-    // Remaining minutes
-    const minutes = Math.floor(((ms % day) % hour) / minute);
-    // Remaining seconds
-    const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-    console.log(days);
-    return { days, hours, minutes, seconds };
-  }
+submit.addEventListener('click', event => {
+  event.preventDefault();
 
-  days.textContent = convertMs(ms).days;
-  hours.textContent = convertMs(ms).hours;
-  minutes.textContent = convertMs(ms).minutes;
-  seconds.textContent = convertMs(ms).seconds;
+  console.log(stepDelay);
+  createPromise()
+    .then(value => {
+      console.log(value);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+// interwał
+let timerId
+timerId = setInterval(() => {
+    console.log(`I love async JS!  ${Math.random()}`);
+  }, 1000);
+
+function createPromise(position, delay) {
+  delay = stepDelay.value;
+  const shouldResolve = Math.random() > 0.3;
+  return new Promise(resolve => {
+    firstDelay = form.delay.value;
+    stepDelay = form.step.value;
+  });
 }
 
-function stopCounting(selectedDates) {
-  if (selectedDates[0].getTime() === actuallDate.getTime()) {
-    clearInterval(countDownID);
-  }
-}
-const countDownID = setInterval(counting, 1000);
-const countDownID = setInterval(counting, 1000);
