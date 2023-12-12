@@ -1,2 +1,0 @@
-const e=document.querySelector(".form");let o,t,l;function n(t,l=5e3){return o=e.delay.value,console.log(o),new Promise((e=>{setTimeout((()=>{Math.random()>.3?e("yes"):e("no")}),l)}))}document.querySelector(".submit").addEventListener("click",(function(u){u.preventDefault(),l=e.amount.value,o=e.delay.value,t=e.step.value;const r=[];for(let e=0;e<l;e++){let e=n(0,o);r.push(e)}Promise.all(r).then((e=>{for(let o=0;o<e.length;o++)console.log(`losowanie${o+1} = ${e[o]}`)}))}));
-//# sourceMappingURL=03-promises.1918a660.js.map
