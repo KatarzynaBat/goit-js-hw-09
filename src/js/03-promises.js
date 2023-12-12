@@ -7,12 +7,18 @@ let timerId;
 
 // losowanie i zwracanie wyniku
 
-function getChances(id, shouldResolve = Math.random()) {
-  if (shouldResolve > 0.3) {
-    return Promise.resolve(` yes`);
-  } else {
-    return Promise.resolve(`no`);
-  }
+function getChances(id, delay = 5000) {
+  firstDelay = form.delay.value;
+  console.log(firstDelay);
+  return new Promise(resolve => {
+    setTimeout(() => {
+      if (Math.random() > 0.3) {
+        resolve(`yes`);
+      } else {
+        resolve(`no`);
+      }
+    }, delay);
+  });
 }
 
 function handleClick(event) {
@@ -22,7 +28,8 @@ function handleClick(event) {
   stepDelay = form.step.value;
   const promises = [];
   for (let i = 0; i < amount; i++) {
-    promises.push(getChances());
+    let reallyGetChances = getChances(i, firstDelay);
+    promises.push(reallyGetChances);
   }
   Promise.all(promises).then(results => {
     for (let i = 0; i < results.length; i++) {
