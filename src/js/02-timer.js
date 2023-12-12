@@ -33,9 +33,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     let selected = selectedDates;
-    console.log(selected);
     if (selectedDates[0].getTime() > actuallDate.getTime()) {
-      console.log('true');
       startBtn.removeAttribute('disabled', '');
       function countingMS() {
         ms = selectedDates[0].getTime() - new Date().getTime();
@@ -77,10 +75,15 @@ function convertMs(ms) {
   }
 }
 function counting() {
-  days.textContent = convertMs(ms).days;
-  hours.textContent = convertMs(ms).hours;
-  minutes.textContent = convertMs(ms).minutes;
-  seconds.textContent = convertMs(ms).seconds;
+  if (ms <= 1) {
+    clearInterval(timerID);
+    return;
+  } else {
+    days.textContent = convertMs(ms).days;
+    hours.textContent = convertMs(ms).hours;
+    minutes.textContent = convertMs(ms).minutes;
+    seconds.textContent = convertMs(ms).seconds;
+  }
 }
 
 startBtn.addEventListener('click', () => {
