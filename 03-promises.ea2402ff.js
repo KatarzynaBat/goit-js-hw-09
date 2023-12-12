@@ -1,0 +1,2 @@
+const e=document.querySelector(".form");let t=e.delay,o=e.step,n=e.amount;document.querySelector(".submit").addEventListener("click",(l=>{l.preventDefault(),console.log(o),function(l,c){const u=Math.random()>.3;return new Promise(((l,c)=>{t=e.delay.value,o=e.step.value,n=e.amount.value,setTimeout((()=>{u?l("resolved"):c("rejectes")}),t)}))}().then((e=>{console.log(e)})).catch((e=>{console.log(e)}))}));
+//# sourceMappingURL=03-promises.ea2402ff.js.map
