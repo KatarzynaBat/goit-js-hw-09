@@ -16,7 +16,6 @@ const seconds = document.querySelector('span[data-seconds]');
 startBtn.setAttribute('disabled', '');
 timerBox.style.display = 'flex';
 timerBox.style.margin = '15px 0 0 -35px';
-let selected;
 for (const span of spans) {
   span.style.textAlign = 'center';
   span.style.display = 'block';
